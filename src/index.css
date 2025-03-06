@@ -1,0 +1,164 @@
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  background-color: #f5f7fb;
+  background-image: url("./assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  color: #293264;
+}
+
+section.intro-section {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2em;
+}
+
+h1.title {
+  font-family: "Karla", "Inter", sans-serif;
+  margin: 0;
+  font-size: 2rem;
+}
+
+p.subtitle {
+  max-width: 400px;
+  text-align: center;
+}
+
+button {
+  background-color: #4d5b9e;
+  color: #f5f7fb;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.7rem;
+  padding: 1em 2.2em;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  background-color: #394687;
+}
+
+button.small {
+  padding: 0.4em 1.5em;
+}
+
+button.large {
+  padding: 1em 1.75em;
+  font-size: 1rem;
+}
+
+section.quiz-section {
+  padding: 2em 1em;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+div.answers-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+div.quiz-item {
+  padding-block: 1em;
+  border-bottom: 1px solid darkgray;
+}
+
+div.quiz-item:last-of-type {
+  margin-bottom: 1em;
+}
+
+button.answer-btn {
+  background-color: #f5f7fb;
+  color: #293264;
+  border: 1px solid #293264;
+}
+
+button.answer-btn.is-picked {
+  background-color: #d6dbf5;
+  border: none;
+}
+
+button.answer-btn.is-disabled {
+  cursor: not-allowed;
+  color: #5a6290;
+}
+
+button.answer-btn.is-false {
+  background-color: #f8bcbc;
+  border: none;
+}
+
+button.answer-btn.is-correct {
+  background-color: #94d7a2;
+  color: #293264;
+  border: none;
+}
+
+div.bottom-container {
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1em;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  section.quiz-section {
+    max-width: 500px;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1.title {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    max-width: 700px;
+  }
+
+  section.quiz-section {
+    max-width: 800px;
+  }
+
+  button {
+    font-size: 1.2rem;
+    padding: 0.2em 1em;
+  }
+
+  button.small {
+    padding: 0.4em 1.5em;
+    font-size: 1rem;
+  }
+
+  button.large {
+    padding: 1em 2em;
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+}
