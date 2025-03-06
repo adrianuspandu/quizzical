@@ -5,10 +5,10 @@ import he from "he";
 import { nanoid } from "nanoid";
 
 function App() {
-  // STATE VALUES
   const [gameState, setGameState] = useState({
     isInGame: false,
     gameCount: 0,
+    isFirstGame: true
   });
 
   const [questions, setQuestions] = useState([]);
@@ -18,9 +18,7 @@ function App() {
   const correctAnswer = determineCorrectAnswer();
 
   // USE EFFECT
-  useEffect(getQuestions, [gameState.gameCount]);
-
-  function getQuestions() {
+  useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&type=multiple")
       .then((res) => res.json())
       .then(function (data) {
@@ -44,7 +42,8 @@ function App() {
           );
         }
       });
-  }
+  }, [gameState.gameCount]);
+
   // CONSTANT VALUES
   const quizItems = questions.map(function (question) {
     return (
@@ -64,7 +63,12 @@ function App() {
   // HELPER FUNCTIONS
   function startQuiz() {
     console.log("start quiz clicked");
-    setGameState((prev) => ({ isInGame: true, gameCount: prev.gameCount + 1 }));
+    if (gameState.isFirstGame) {
+      setGameState({isInGame: true, gameCount: 0, isFirstGame: false})
+    }
+    else {
+      setGameState((prev) => ({ isInGame: true, gameCount: prev.gameCount + 1 }));
+    }
   }
 
   function determineAllGuessed() {
@@ -101,7 +105,7 @@ function App() {
 
   return (
     <main>
-      {gameState.gameCount === 0 && !gameState.isInGame && (
+      {gameState.isFirstGame && !gameState.isInGame && (
         <section className="intro-section">
           <h1 className="title">Quizzical</h1>
           <p className="subtitle">
@@ -114,14 +118,12 @@ function App() {
           </Button>
         </section>
       )}
-      {gameState.gameCount > 0 && (
+      {!gameState.isFirstGame && (
         <section className="quiz-section">
           {quizItems}
           <div className="bottom-container">
             {allGuessed && gameState.isInGame && (
-              <Button onClick={checkAnswers}>
-                Check answers
-              </Button>
+              <Button onClick={checkAnswers}>Check answers</Button>
             )}
             {!gameState.isInGame && (
               <>
