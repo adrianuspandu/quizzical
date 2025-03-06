@@ -45,8 +45,6 @@ function App() {
         }
       });
   }
-
-  console.log(questions);
   // CONSTANT VALUES
   const quizItems = questions.map(function (question) {
     return (

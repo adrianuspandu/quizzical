@@ -1,8 +1,5 @@
 html,
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin: 0;
   height: 100vh;
   font-family: "Inter", sans-serif;
@@ -61,6 +58,8 @@ button.large {
 
 section.quiz-section {
   padding: 2em 1em;
+  max-width: 500px;
+  margin-inline: auto;
 }
 
 h2 {
@@ -122,11 +121,23 @@ div.bottom-container {
   justify-content: center;
 }
 
+@media (min-width: 576px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+} 
+
 @media (min-width: 768px) {
   section.quiz-section {
-    max-width: 500px;
-    margin-inline: auto;
+    max-width: 600px;
   }
+
+  div.quiz-item {
+    padding-block: 1.5em;
+  }
+
 }
 
 @media (min-width: 1024px) {
@@ -134,13 +145,13 @@ div.bottom-container {
     font-size: 3rem;
   }
 
-  p {
+  p, p.subtitle {
     font-size: 1.5rem;
     max-width: 700px;
   }
 
   section.quiz-section {
-    max-width: 800px;
+    max-width: 700px;
   }
 
   button {
